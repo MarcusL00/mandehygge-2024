@@ -5,6 +5,11 @@ import "./App.css"; // Import your CSS file
 
 const App: React.FC = () => {
   const [showGallery, setShowGallery] = useState(true);
+  const [showResults, setShowResults] = useState(true);
+
+  const toggleResults = () => {
+    setShowResults(!showResults);
+  };
 
   const toggleContent = () => {
     setShowGallery(!showGallery);
@@ -13,10 +18,18 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <h2 className="title">Mande hygge 2024</h2>
-      <button onClick={toggleContent}>Switch to Quiz</button>
-      {showGallery ? (
+      <button onClick={toggleContent} className="toggle-btn">
+        Quiz
+      </button>
+      <button onClick={toggleResults} className="toggle-btn">
+        Resultat
+      </button>
+
+      {/* Conditional rendering using ternary operator */}
+      {showGallery || showResults ? (
         <div className="gallery-container">
-          <MyGallery />
+          {showGallery && <MyGallery />}
+          {showResults && <Quiz />}
         </div>
       ) : (
         <div className="quiz-container">
