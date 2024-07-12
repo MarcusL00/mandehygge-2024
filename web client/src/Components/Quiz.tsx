@@ -1,19 +1,52 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./quiz.css"; // Import your CSS file
 
+// Define the interface for answers
+interface Answer {
+  [key: string]: string;
+}
+
+// Define the interface for the API response
+interface SubmitAnswersResponse {
+  success: boolean;
+  message: string;
+  // Add other fields based on the API response
+}
+
+// Function to submit answers
+const submitAnswers = async (
+  name: string,
+  answers: Answer
+): Promise<SubmitAnswersResponse | null> => {
+  try {
+    const response = await axios.post<SubmitAnswersResponse>(
+      "https://quizapi.marcuslystrup.dk/api/submitAnswers",
+      { name, ...answers },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting answers:", error);
+    return null;
+  }
+};
+
 const Quiz: React.FC = () => {
-  // State for storing the name input
   const [name, setName] = useState("");
-
-  // State for storing answers to questions
   const [answers, setAnswers] = useState<string[]>(Array(14).fill("")); // Initialize with empty strings
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [response, setResponse] = useState<SubmitAnswersResponse | null>(null);
 
-  // Function to handle name input change
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
 
-  // Function to handle dropdown selection change for each question
   const handleAnswerChange = (
     index: number,
     event: React.ChangeEvent<HTMLSelectElement>
@@ -23,16 +56,29 @@ const Quiz: React.FC = () => {
     setAnswers(newAnswers);
   };
 
-  // Function to handle form submission
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Here you can process the quiz submission, e.g., send data to backend or display results
-    console.log("Name:", name);
-    console.log("Answers:", answers);
-    // Reset form or navigate to next page, etc.
+    setLoading(true);
+    setError(null);
+    setResponse(null);
+    // Prepare the answers in the format expected by the API
+    const answersData: Answer = answers.reduce((acc, answer, index) => {
+      acc[`answer${index + 1}`] = answer;
+      return acc;
+    }, {} as Answer);
+    console.log(name);
+    console.log(answersData);
+    const result = await submitAnswers(name, answersData);
+
+    if (result) {
+      setResponse(result);
+    } else {
+      setError("Failed to submit answers");
+    }
+
+    setLoading(false);
   };
 
-  // Questions array with options
   const questions = [
     {
       question: "Hvem sutter først en pik?",
@@ -318,8 +364,13 @@ const Quiz: React.FC = () => {
             </select>
           </div>
         ))}
-        <button type="submit">Send svar</button>
+        <button type="submit" disabled={loading}>
+          Send svar
+        </button>
       </form>
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {response && <p>{response.message}</p>}
     </div>
   );
 };
