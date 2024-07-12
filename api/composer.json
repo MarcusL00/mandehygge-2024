@@ -1,0 +1,20 @@
+{
+  "name": "marcusl00/mande-hygge-api",
+  "type": "project",
+  "require": {
+    "php": "^8.3.3",
+    "ext-pdo_mysql": "*",
+    "illuminate/database": "^11.15",
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "MandeHyggeApi\\": "src/",
+      "MandeHyggeApi\\Controllers\\": "src/controllers/",
+      "MandeHyggeApi\\Models\\": "src/models/",
+      "MandeHyggeApi\\Models\\ORM\\": "src/models/orm/",
+      "MandeHyggeApi\\Utils\\": "src/utils/",
+      "MandeHyggeApi\\Middleware\\": "src/middleware/"
+    }
+  }
+}

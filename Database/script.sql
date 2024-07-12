@@ -3,7 +3,8 @@ CREATE DATABASE Mandehygge;
 USE Mandehygge;
 
 CREATE TABLE QuizAnswers (
-    navn VARCHAR(255),
+    id int unsigned not null AUTO_INCREMENT,
+    `name` VARCHAR(255),
     answer1 VARCHAR(255),
     answer2 VARCHAR(255),
     answer3 VARCHAR(255),
@@ -17,14 +18,7 @@ CREATE TABLE QuizAnswers (
     answer11 VARCHAR(255),
     answer12 VARCHAR(255),
     answer13 VARCHAR(255),
-    answer14 VARCHAR(255)
+    answer14 VARCHAR(255),
+
+    PRIMARY KEY (`id`)
 );
-
-DELIMITER //
-
-CREATE PROCEDURE GetData()
-BEGIN
-    SELECT * FROM QuizAnswers;
-END //
-
-DELIMITER ;
