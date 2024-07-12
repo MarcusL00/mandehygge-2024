@@ -13,7 +13,9 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <h2 className="title">Mande hygge 2024</h2>
-      <button onClick={toggleContent}>Switch to Quiz</button>
+      <button onClick={toggleContent} className="toggle-btn">
+        Switch to Quiz
+      </button>
       {showGallery ? (
         <div className="gallery-container">
           <MyGallery />

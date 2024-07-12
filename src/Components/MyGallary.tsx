@@ -5,23 +5,23 @@ import "react-image-gallery/styles/scss/image-gallery.scss"; // Import ImageGall
 const images: ReactImageGalleryItem[] = [
   {
     original: "./druk.jpg",
-    thumbnail: "./druk.jpg",
+    // thumbnail: "./druk.jpg",
   },
   {
     original: "./Druk2.png",
-    thumbnail: "./Druk2.png",
+    // thumbnail: "./Druk2.png",
   },
   {
     original: "./druk3.png",
-    thumbnail: "./druk3.png",
+    // thumbnail: "./druk3.png",
   },
   {
     original: "./druk4.jpg",
-    thumbnail: "./druk4.jpg",
+    // thumbnail: "./druk4.jpg",
   },
   {
     original: "./druk5.png",
-    thumbnail: "./druk5.png",
+    // thumbnail: "./druk5.png",
   },
 ];
 
