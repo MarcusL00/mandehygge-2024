@@ -54,5 +54,5 @@ body {
 .button-container{
   display:flex;
   justify-content: space-evenly;
-  margin-bottom: 1vh;
+  margin-bottom: 2vh;
 }
