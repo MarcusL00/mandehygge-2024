@@ -1,39 +1,48 @@
 import React, { useState } from "react";
 import MyGallery from "./Components/MyGallary";
-import Quiz from "./Components/Quiz"; // Assuming you have a Quiz component
-import "./App.css"; // Import your CSS file
+import Quiz from "./Components/Quiz";
+import Results from "./Components/Results"; // Assuming you have a Results component
+import "./App.css";
 
 const App: React.FC = () => {
-  const [showGallery, setShowGallery] = useState(true);
-  const [showResults, setShowResults] = useState(true);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+
+  const toggleContent = () => {
+    setShowQuiz(!showQuiz);
+    setShowResults(false); // Ensure results are hidden when switching to quiz
+  };
 
   const toggleResults = () => {
     setShowResults(!showResults);
-  };
-
-  const toggleContent = () => {
-    setShowGallery(!showGallery);
+    setShowQuiz(false); // Ensure quiz is hidden when showing results
   };
 
   return (
     <div className="container">
       <h2 className="title">Mande hygge 2024</h2>
-      <button onClick={toggleContent} className="toggle-btn">
-        Quiz
-      </button>
-      <button onClick={toggleResults} className="toggle-btn">
-        Resultat
-      </button>
+      <div className="button-container">
+        <button onClick={toggleContent} className="toggle-btn">
+          {showQuiz ? "Vis Galleri" : "Vis Quiz"}
+        </button>
+        <button onClick={toggleResults} className="toggle-btn">
+          {showResults ? "Skjul Resultater" : "Vis Resultater"}
+        </button>
+      </div>
 
-      {/* Conditional rendering using ternary operator */}
-      {showGallery || showResults ? (
-        <div className="gallery-container">
-          {showGallery && <MyGallery />}
-          {showResults && <Quiz />}
-        </div>
-      ) : (
+      {showQuiz ? (
         <div className="quiz-container">
           <Quiz />
+        </div>
+      ) : (
+        <div className="gallery-container">
+          <MyGallery />
+        </div>
+      )}
+
+      {showResults && (
+        <div className="results-container">
+          <Results />
         </div>
       )}
     </div>
