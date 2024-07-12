@@ -41,8 +41,8 @@ class ComposerStaticInit7cb42ab2c6de9f2e86dde47607d025c4
         ),
         'M' => 
         array (
-            'MandeHyggeApi\\utils\\' => 20,
-            'MandeHyggeApi\\models\\ORM\\' => 25,
+            'MandeHyggeApi\\Utils\\' => 20,
+            'MandeHyggeApi\\Models\\ORM\\' => 25,
             'MandeHyggeApi\\Models\\' => 21,
             'MandeHyggeApi\\Middleware\\' => 25,
             'MandeHyggeApi\\Controllers\\' => 26,
@@ -124,11 +124,11 @@ class ComposerStaticInit7cb42ab2c6de9f2e86dde47607d025c4
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'MandeHyggeApi\\utils\\' => 
+        'MandeHyggeApi\\Utils\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/utils',
         ),
-        'MandeHyggeApi\\models\\ORM\\' => 
+        'MandeHyggeApi\\Models\\ORM\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/models/orm',
         ),

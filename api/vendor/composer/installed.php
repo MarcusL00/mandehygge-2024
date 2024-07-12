@@ -3,7 +3,7 @@
         'name' => 'marcusl00/mande-hygge-api',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '094ac980ef238e6c6b2a33c7f757c05047145af4',
+        'reference' => 'dcc466da7bc922a7387fc9dfb1f435389e4d9a4f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -112,7 +112,7 @@
         'marcusl00/mande-hygge-api' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '094ac980ef238e6c6b2a33c7f757c05047145af4',
+            'reference' => 'dcc466da7bc922a7387fc9dfb1f435389e4d9a4f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
