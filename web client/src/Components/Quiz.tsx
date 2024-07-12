@@ -111,7 +111,7 @@ const Quiz: React.FC = () => {
       ],
     },
     {
-      question: "Hvem laver den første TO?",
+      question: "Hvem laver den første TKO?",
       options: [
         "Robert",
         "Simon W",
@@ -309,7 +309,7 @@ const Quiz: React.FC = () => {
               onChange={(e) => handleAnswerChange(index, e)}
               required
             >
-              <option value="">Vælg et svar</option>
+              <option value="">Vælg et pik hovede</option>
               {q.options.map((option, optionIndex) => (
                 <option key={optionIndex} value={option}>
                   {option}
@@ -318,7 +318,7 @@ const Quiz: React.FC = () => {
             </select>
           </div>
         ))}
-        <button type="submit">Submit</button>
+        <button type="submit">Send svar</button>
       </form>
     </div>
   );
